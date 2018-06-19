@@ -1,4 +1,3 @@
-
 #include <PID_v1.h>
 #define sensor A0
 double Kp =2.4187, Ki = 1, Kd = 0;
@@ -40,51 +39,12 @@ PID B126V(&vinput, &hjulhhastighedV, &setpoint, Kp, Ki, Kd, DIRECT);
  
 void hinter()
 {
-  
-  
- 
- 
 htidEfter = htid;
-
-
-  
-  /*
-  htid = millis();
-  hsamples[4] = hsamples[3];
-  hsamples[3] = hsamples[2];
-  hsamples[2] = hsamples[1];
-  hsamples[1] = hsamples[0];
-  hsamples[0] = htid - htidEfter;
-  gennemsnit = ((hsamples[0] + hsamples[1] + hsamples[2] + hsamples[3] + hsamples[4]) / 5);
-  htidEfter = htid;
-  hhast = (cm / gennemsnit) * 1000;
-  */
 }
-
 void vinter()
 {
-  
-  
-  
-  
 vtidEfter = vtid;
-
-
-
-  
-  /*
-  vtid = millis();
-  vsamples[4] = vsamples[3];
-  vsamples[3] = vsamples[2];
-  vsamples[2] = vsamples[1];
-  vsamples[1] = vsamples[0];
-  vsamples[0] = vtid - vtidEfter;
-  gennemsnit = ((vsamples[0] + vsamples[1] + vsamples[2] + vsamples[3] + vsamples[4]) / 5);
-  vtidEfter = vtid;
-  vhast = (cm / gennemsnit) * 1000;
-*/
 }
-
 void setup() {
   setpoint = 20;
   Serial.begin(9600); // set up Serial library at 9600 bps
@@ -131,7 +91,6 @@ htid = millis();
   vhast = (cm / vgennemsnit) * 1000;
     
     Serial.println(vhast);
-      
    
     hinput = hhast;
     vinput = vhast;
@@ -140,25 +99,7 @@ htid = millis();
     B126H.Compute();
     analogWrite(motorH, hjulhhastighedH);
     analogWrite(motorV, hjulhhastighedV);
-    
-   // Serial.println(vhast);
-    //Serial.print(" cm/s ");
-    //Serial.print("  :  ");
-    //Serial.print(hhast);
-    //Serial.println(" cm/s");
-    
-    // Serial.print("      :      ");
-    //Serial.print(hhast);
-    //Serial.println(" cm/s");
-
-//delay(20);
-  
-  
 }
-
-
-
-
 //1,06 pr hak og 0,53 pr ændring
 //Huller ved motorer 20
 //Længde rundt om hjul 21,2
